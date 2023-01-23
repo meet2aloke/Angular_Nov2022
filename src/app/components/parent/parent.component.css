@@ -1,0 +1,15 @@
+.lbl-head{
+    background-color: antiquewhite;
+    width: 100%;
+    padding: 3px;
+    text-align: center;
+}
+.in-1{
+    width: 60px;
+    height: 32px;
+}
+
+.in-2{
+    width: 100px;
+    height: 32px;
+}

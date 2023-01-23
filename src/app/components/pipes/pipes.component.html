@@ -1,0 +1,70 @@
+<div class="row p-3">
+    <div class="col-12 text-center fs-3">
+        Pipes (Jan 12th, 2023)
+    </div>
+    <div class="col-3 p-1">
+        <label class="lbl-title">Pipe: uppercase, lowercase, titlecase</label>
+        <div class="bg-white bdr-solid mh-1 p-2">
+            <p>Original Text: {{name}}</p>
+            <p>Lowercase: {{name | lowercase}}</p>
+            <p>Titlecase: {{name | titlecase}}</p>
+            <p>Uppercase: {{name | uppercase}}</p>
+        </div>
+    </div>
+    <div class="col-3 p-1">
+        <label class="lbl-title">Pipe: currency</label>
+        <div class="bg-white bdr-solid mh-1 p-2">
+            <p>Original Number: {{amount}}</p>
+            <p>Default currency: {{amount | currency}}</p>
+            <p>Indian Rupees: {{amount | currency : 'INR'}}</p>
+            <p>Euro: {{amount | currency : '&euro;'}}</p>
+        </div>
+    </div>
+    <div class="col-3 p-1">
+        <label class="lbl-title">Pipe: date</label>
+        <div class="bg-white bdr-solid mh-1 p-2">
+            <p>Today: {{today | date : 'MM/dd/yyyy'}}</p>
+            <p>Time: {{today | date : 'hh:mm aa'}} / {{today | date : 'HH:mm aa'}}</p>
+            <p>Month: {{today | date : 'LL'}} / {{today | date : 'MMM'}} / {{today | date : 'MMMM'}}</p>
+            <p>Day: {{today | date : 'EE'}} / {{today | date : 'EEEE'}}</p>
+        </div>
+    </div>
+    <div class="col-3 p-1">
+        <label class="lbl-title">Pipe: ordinal (custom)</label>
+        <div class="bg-white bdr-solid mh-1 p-2">
+            <input type="number" [(ngModel)]="cNo" placeholder="Enter a number to display ordinal format" class="form-control">
+            <label *ngFor="let n of [].constructor(20); let i = index" class="pe-1">{{i+cNo | ordinal}},</label>
+        </div>
+    </div>
+    <div class="col-4 p-1">
+        <label class="lbl-title">Pipe: character left (custom)</label>
+        <div class="bg-white bdr-solid mh-1 p-2">
+            <label class="float-right">{{msgCharLeft | remainingChar : 100}} character(s) left</label>
+            <textarea [(ngModel)]="msgCharLeft" class="form-control" rows="3"></textarea>
+        </div>
+    </div>
+    <div class="col-4 p-1">
+        <label class="lbl-title">Pipe: word left (custom)</label>
+        <div class="bg-white bdr-solid mh-1 p-2">
+            <label class="float-right">{{msgWordLeft | remainingWord : 15}} word(s) left</label>
+            <textarea [(ngModel)]="msgWordLeft" class="form-control" rows="3"></textarea>
+        </div>
+    </div>
+    <div class="col-4 p-1">
+        <label class="lbl-title">Pipe: truncate (custom)</label>
+        <div class="bg-white bdr-solid mh-1 p-2">
+            <label>{{longString | truncate}}</label>
+            <label>{{longString | truncate : 60}}</label>
+            <label>{{longString | truncate : 60 : false}}</label>
+            <label>{{longString | truncate : 60 : true : '***'}}</label>
+        </div>
+    </div>
+    <div class="col-4 p-1">
+        <label class="lbl-title">Pipe: sort (custom impure pipe)</label>
+        <div class="bg-white bdr-solid mh-1 p-2">
+            <b *ngFor='let i of arr | mySort'>{{i}}, &nbsp;</b><br/>
+            <input #newNum />
+            <button class="btn btn-primary ms-1" (click)="arr.push(+newNum.value)">Add</button>
+        </div>
+    </div>
+</div>

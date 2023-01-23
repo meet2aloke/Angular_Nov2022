@@ -1,0 +1,12 @@
+.bg-footer{
+    background-color: #c1f4ff;
+}
+.footer-copyright{
+    background-color: #00617e;
+}
+.sec-sub{
+    width: 70%;
+}
+.disp-flex{
+    display: flex !important;
+}

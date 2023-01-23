@@ -1,0 +1,27 @@
+.main{
+    margin: 10px;
+    margin-bottom: 30px;;
+    border: 1px solid silver;
+    padding: 10px;
+    min-height: 400px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+.page-head{
+    text-align: center;
+}
+.page-head label{
+    font-size: 30px;
+}
+.table > thead{
+    vertical-align: middle;
+    height: 48px;
+}
+.my-btn{
+    margin: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.srch-box{
+    width: 210px;
+}

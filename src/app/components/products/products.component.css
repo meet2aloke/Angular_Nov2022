@@ -1,0 +1,64 @@
+.btn-toggle{
+    background-color: aliceblue;
+    border: 1px solid silver;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.tbl-header{
+    background-color: #006004;
+    color: white;
+    text-align: center;
+    height: 50px;
+    vertical-align: middle;
+    font-family: Roboto,sans-serif;
+}
+.table-bordered{
+    border-radius: 3px;
+}
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: #cefbff;
+ }
+.card-header{
+    background-color: #006004;
+    color: white;
+}
+.card-body{
+    height: 240px;
+}
+.img-size{
+    max-height: 200px;
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    opacity: 1;
+    transition: opacity .5s linear;
+    z-index: 0;
+}
+.card-footer{
+    text-align: left;
+    padding: 6px 10px;
+}
+.foo-desc{
+    font-size: 10px;
+    display: block;
+    text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.bdr{
+    border: 1px solid silver;
+}
+.srch-box{
+    max-width: 360px;
+}
+.sort-btn{
+    width: 200px;
+    font-size: 12px;
+    margin: 4px 1px 4px 0;
+}

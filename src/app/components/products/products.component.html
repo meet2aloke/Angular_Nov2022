@@ -1,0 +1,78 @@
+<!-- <ng-container *ngFor="let item of productList">
+    <p>{{item.category}}</p>
+</ng-container> -->
+<div class="m-3">
+    <div class="disp-flex" style="text-align:right">
+        <button id="btn_showHide" (click)="this.showTable=!this.showTable" class="btn btn-default btn-toggle"><span [ngClass]="this.showTable?btnCard:btnTable"></span>{{showTable ? 'Card View' : 'Table View'}} </button>
+        <div class="disp-flex float-right">
+            <button class="btn btn-primary sort-btn" (click)="Pricesort()">{{sortOrder ? 'Price: Low to High' : 'Price: High to Low'}}<span class="fas ms-1" [ngClass]="this.sortOrder ? 'fa-arrow-up' : 'fa-arrow-down'"></span></button>
+            <input type="search" [(ngModel)]="searchText" class="form-control srch-box" placeholder="Search something...">
+        </div>
+    </div>
+    <div class="bg-white">
+        <div *ngIf="showTable; else showCards" class="bdr p-2">
+            <table class="table table-bordered table-striped">
+                <thead class="tbl-header">
+                    <th>Category</th>
+                    <th style="width: 40%;">Title</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <th>Index</th>
+                    <th>Is First?</th>
+                    <th>Is Last?</th>
+                    <th>Is Even?</th>
+                    <th>Is Odd?</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products | filter : searchText | paginate: { itemsPerPage: 12, currentPage: p };
+                                let ind=index;
+                                let isFirst=first; let isLast=last;
+                                let isEven=even;let isOdd=odd">
+                        <td>{{product.category}}</td>
+                        <td>{{product.title}}</td>
+                        <td>$ {{product.price}}</td>
+                        <td>{{product.rating.rate}}</td>
+                        <td>{{ind}}</td>
+                        <td>{{isFirst}}</td>
+                        <td>{{isLast}}</td>
+                        <td>{{isEven}}</td>
+                        <td>{{isOdd}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-md-8 offset-md-2 text-center">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+        <ng-template #showCards>
+            <div class="bdr">
+                <div class="row m-0">
+                    <ng-container *ngFor="let product of products | filter : searchText | paginate: { itemsPerPage: 12, currentPage: p }">
+                        <div class="col-md-2 p-2">
+                            <div class="card text-center">
+                                <div class="card-header">{{product.category}}</div>
+                                <div class="card-body">
+                                    <img src="{{product.image}}" class="d-block img-size" alt="...">
+                                </div>
+                                <div class="card-footer">
+                                    <label>Price ${{product.price}}</label>
+                                    <button on-click="btn_buy()" class="btn btn-primary pt-0 pb-1 float-right">Buy</button>
+                                    <label class="foo-desc">{{product.title}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2 text-center">
+                            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>
+
+

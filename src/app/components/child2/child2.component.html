@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-4 disp-flex">
+        <label class="me-3">Own Data X</label>
+        <input type="number" [(ngModel)]="c2x" style="width: 60px">
+    </div>
+    <div class="col-4 disp-flex">
+        <label class="me-2">Own Data Y</label>
+        <input type="text" [(ngModel)]="c2y" style="width: 100px">
+    </div>
+    <div class="col-4 disp-flex">
+        <label class="me-2">Own Data Z</label>
+        <input type="number" [(ngModel)]="c2z" style="width: 60px">
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-6">
+        <label>Coming from Parent: A={{p_elem.a}}</label><br>
+        <label>Coming from Parent: B={{p_elem.b}}</label><br>
+        <label>Coming from Parent: C={{p_elem.c}}</label><br>
+        <label>Coming from Parent: D={{p_elem.d}}</label><br>
+    </div>
+    <div class="col-6">
+        <label>Coming from CHLID-1: M={{p_elem.m}}</label><br>
+        <label>Coming from CHLID-1: N={{p_elem.n}}</label><br>
+        <label>Coming from CHLID-1: O={{p_elem.o}}</label><br>
+    </div>
+</div>
+
+<hr>
+<div class="text-center">
+    <button (click)="sendDataToParent()" class="btn btn-info">Send Data to Parent</button>
+</div>

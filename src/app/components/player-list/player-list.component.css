@@ -1,0 +1,9 @@
+.table > thead{
+    vertical-align: middle;
+    height: 48px;
+}
+.my-btn{
+    margin: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}

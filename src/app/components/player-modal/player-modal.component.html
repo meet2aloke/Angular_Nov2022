@@ -1,0 +1,57 @@
+<div class="modal fade" id="playerModal" tabindex="-1" aria-labelledby="playerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="playerModalLabel">
+            {{player.header}}
+          </h5>
+          <button #closeModal type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body ps-5 pe-5">
+            <!-- <form> -->
+                <div class="row">
+                    <div class="col-3 mb-3">
+                        <label for="pId" class="form-label">ID</label>
+                        <input appNumberonly type="number" class="form-control" id="pId" [(ngModel)]="player.id">
+                    </div>
+                    <div class="col-9 mb-3">
+                        <label for="pName" class="form-label">Name</label>
+                        <input appTextinput type="text" class="form-control" id="pName" [(ngModel)]="player.name">
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="pEmail" class="form-label">Email Address</label>
+                        <input appValidemail type="email" class="form-control" id="pEmail" [(ngModel)]="player.email">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="pCity" class="form-label">City Born</label>
+                        <input appTextinput type="text" class="form-control" id="pCity" [(ngModel)]="player.city">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="pGender" class="form-label">Gender</label>
+                        <select id="pGender" [(ngModel)]="player.gender" class="form-control">
+                            <option value="F">Female</option>
+                            <option value="M">Male</option>
+                        </select>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="pTrnure" class="form-label">Tenure</label>
+                        <input type="text" class="form-control" id="pTrnure" [(ngModel)]="player.tenure">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="pRuns" class="form-label">Runs</label>
+                        <input appNumberonly type="number" class="form-control" id="pRuns" [(ngModel)]="player.runs">
+                    </div>
+                    <div class="col-12 mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="pAck" [(ngModel)]="player.agreeTerm">
+                        <label class="form-check-label" for="pAck">The player has accepted terms and condition</label>
+                    </div>
+                </div>
+            <!-- </form> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" (click)="addUpdPlayer(player.id)" class="btn btn-primary" [hidden]="!player.addUpdBtn">{{player.btnName}}</button>
+        </div>
+      </div>
+    </div>
+</div>

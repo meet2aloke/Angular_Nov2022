@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.css';
+
+.bg-white{
+    background-color: #fff;
+}
+.disp-none{
+    display: none !important;
+}
+
+.disp-flex{
+    display: flex !important;
+}
+
+.disp-block{
+    display: block !important;
+}
+
+.float-right{
+    float: right !important;
+}
+.bdr-solid{
+    border: 1px solid silver;
+}
+
+.mh-2{
+    min-height: 200px;
+}
+.mh-3{
+    min-height: 300px;
+}

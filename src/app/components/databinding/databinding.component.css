@@ -1,0 +1,23 @@
+.ex-box{
+    border: 1px solid silver;
+    padding: 10px;
+}
+hr{
+    margin: 3px;
+}
+.w-50{
+    width: 50%;
+}
+.btn{
+    width: 194px;
+}
+.lbl{
+    font-size: 12px;
+}
+.lbl2{
+    font-size: 10px;
+    color: rgb(185, 0, 0);
+}
+.lbl-title{
+    font-size: 8px;
+}

@@ -1,0 +1,14 @@
+.category{
+    border: 1px solid silver;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 2px;
+}
+.category span {
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .category img {
+    width: 70px;
+    height: 70px;
+  }

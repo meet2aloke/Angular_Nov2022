@@ -1,0 +1,26 @@
+<table class="table table-bordered table-striped">
+    <thead class="bg-secondary text-center text-white">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email Address</th>
+        <th>City Born</th>
+        <th>Tenure</th>
+        <th>ODI Runs</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let player of playersList">
+            <td>{{player.id}}</td>
+            <td>{{player.name | namePrefix : player.gender}}</td>
+            <td>{{player.email | lowercase}}</td>
+            <td>{{player.city | titlecase}}</td>
+            <td>{{player.tenure}}</td>
+            <td style="text-align: right;">{{player.runs | number}}</td>
+            <td class="text-center">
+                <button (click)="viewPlayer(player.id)" class="btn btn-info my-btn"><span class="fas fa-paperclip me-1"></span>View</button>
+                <button (click)="editPlayer(player.id)" class="btn btn-success my-btn"><span class="fas fa-edit me-1"></span>Edit</button>
+                <button (click)="deletePlayer(player.id)" class="btn btn-warning my-btn"><span class="fas fa-trash-alt me-1"></span>Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

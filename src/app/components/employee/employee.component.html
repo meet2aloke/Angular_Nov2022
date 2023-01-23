@@ -1,0 +1,94 @@
+<div class="main">
+    <!-- <div class="page-head">
+        <label>Employee List</label>
+    </div> -->
+    <div class="float-right">
+        <input [(ngModel)]="searchText" class="form-control srch-box" placeholder="Search something here...">
+    </div>
+    <div>
+        <table class="table table-bordered table-striped">
+            <thead class="bg-secondary text-center text-white">
+                <th>ID</th>
+                <th>Employe Name</th>
+                <th>Email Address</th>
+                <th>Current City</th>
+                <th>Salary</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let emp of employees | myFilter : searchText">
+                    <td>{{emp.id}}</td>
+                    <td>{{emp.name | namePrefix : emp.gender}}</td>
+                    <td>{{emp.email | lowercase}}</td>
+                    <td>{{emp.city | titlecase}}</td>
+                    <td>{{emp.salary | currency: 'USD'}}</td>
+                    <td class="text-center">
+                        <button (click)="readEmp(emp.id)" class="btn btn-info my-btn">View</button>
+                        <button (click)="updateEmp(emp.id)" class="btn btn-success my-btn">Edit</button>
+                        <button (click)="deleteEmp(emp.id)" class="btn btn-warning my-btn">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center mb-3">
+        <button (click)="createEmp()" type="button" class="btn btn-primary">Add Employee</button>
+    </div>
+</div>
+
+<!-- Modal -->
+<button #openModal type="button" data-bs-toggle="modal" data-bs-target="#empModal" [hidden]="true">Open Modal</button>
+<div class="modal fade" id="empModal" tabindex="-1" aria-labelledby="empModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="empModalLabel">
+            {{modalHeader}}
+          </h5>
+          <button #closeModal type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body ps-5 pe-5">
+            <!-- <form> -->
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <label for="empId" class="form-label">ID</label>
+                        <input appNumberonly type="number" class="form-control" id="empId" [(ngModel)]="empId">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="empGender" class="form-label">Gender</label>
+                        <select id="empGender" [(ngModel)]="empGender" class="form-control">
+                            <option value="F">Female</option>
+                            <option value="M">Male</option>
+                        </select>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="empName" class="form-label">Employee Name</label>
+                        <input appTextinput type="text" class="form-control" id="empName" [(ngModel)]="empName">
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="empEmail" class="form-label">Email Address</label>
+                        <input appValidemail type="email" class="form-control" id="empEmail" [(ngModel)]="empEmail">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="empCity" class="form-label">Current City</label>
+                        <input appTextinput type="text" class="form-control" id="empCity" [(ngModel)]="empCity">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="empSalary" class="form-label">Salary</label>
+                        <input appNumberonly type="number" class="form-control" id="empSalary" [(ngModel)]="empSal">
+                    </div>
+                    <div class="col-12 mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="empAck" [(ngModel)]="empAck">
+                        <label class="form-check-label" for="empAck">The employee has accepted terms and condition</label>
+                    </div>
+                </div>
+            <!-- </form> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" (click)="addEmp()" class="btn btn-primary" [hidden]="!addBtn">Add</button>
+          <button type="button" (click)="updEmp(empId)" class="btn btn-primary" [hidden]="!updBtn">Update</button>
+        </div>
+      </div>
+    </div>
+</div>

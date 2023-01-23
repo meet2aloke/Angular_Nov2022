@@ -1,0 +1,7 @@
+.nav-bg{
+    background-color: unset;
+    background-image: linear-gradient(to bottom,#8db9eb,#003768 100%);;
+}
+.nav-link{
+    color: white !important;
+}

@@ -1,0 +1,130 @@
+<div class="row">
+    <div class="col-12 text-center fs-3">
+        Databinding Examples (Jan 3rd - 4th, 2023)
+    </div>
+    <!-- basic -->
+    <div class="col-4 disp-none">
+        <div class="ex-box">
+            One-way databinding by Interpolation: {{name}}
+            <hr>
+            One-way databinding by Property Binding: <span [innerHTML]="name"></span>
+        </div>
+    </div>
+    <!-- image binding -->
+    <div class="col-4">
+        <div class="p-2">
+            <label class="lbl-title">Data Binding: Image Url</label>
+            <div class="ex-box">
+                <img src="{{img_url1}}">
+                <span class="ps-2"></span>
+                <img [src]="img_url1">
+            </div>
+        </div>
+    </div>
+    <!-- 1-way/2-way data binding -->
+    <div class="col-4">
+        <div class="p-2">
+            <label class="lbl-title">Data Binding (1-Way / 2-Way)</label>
+            <div class="ex-box disp-flex">
+                <div class="row">
+                    <div class="col-6 p-1 ps-3">
+                        <label>HTML Way:</label>
+                        <input class="disp-flex" value="Sachin Tendulkar" />
+                    </div>
+                    <div class="col-6 p-1">
+                        <label>Interpolation:</label>
+                        <input class="disp-flex" value="{{name}}" />
+                    </div>
+                    <div class="col-6 p-1 ps-3">
+                        <label>Property Binding:</label>
+                        <input class="disp-flex" [value]="name" />
+                    </div>
+                    <div class="col-6 p-1">
+                        <label>Property Binding:</label>
+                        <input class="disp-flex" bind-value="name" />
+                    </div>
+                    <div class="col-6 p-1 ps-3">
+                        <label>2-Way:</label>
+                        <input [(ngModel)]="name" class="disp-flex" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- Interpolation vs Property binding: handling boolean -->
+    <div class="col-4">
+        <div class="p-2">
+            <label class="lbl-title">Interpolation vs Property binding: handling boolean value</label>
+            <div class="ex-box">
+                <button disabled="{{flag}}" class="btn btn-warning me-2">Interpolation</button>
+
+                <button [disabled]="flag" class="btn btn-success">Property Binding</button>
+                <button bind-disabled="flag" class="btn btn-success mt-2">Property Binding</button>
+
+                <button (click)="f1()" class="btn btn-primary ms-2 mt-2">Event Binding</button>
+                <button on-click="f1()" class="btn btn-primary mt-2">Event Binding</button>
+            </div>
+        </div>
+    </div>
+    <!-- exercise -->
+    <div class="col-4">
+        <div class="p-2">
+            <label class="lbl-title">Exercise: Event Binding</label>
+            <div class="ex-box">
+                <div class="disp-flex">
+                    <button id="btn_showHide" (click)="toggleFlag()" [ngClass]="this.flg ? btnHide : btnShow">{{flg ? 'Show' : 'Hide'}} Paragraph</button>
+                    <!-- <button (click)="this.flg = !this.flg" class="btn btn-info me-2">{{flg ? 'Show Paragraph' : 'Hide Paragraph'}}</button> -->
+                    <h5 [hidden]="flg" style="padding-top: 6px;">This is a paragraph!</h5>
+                </div>
+                <div class="disp-flex mt-2">
+                    <input type="{{showPass ? 'text' : 'password'}}" value="myPassword@123">
+                    <input type="checkbox" (change)="this.showPass = !this.showPass" class="ms-2 me-1" [checked]="showPass"><span style="padding-top: 2px;">Show Password</span>
+                    <!-- <button on-click="this.showPass = !this.showPass" class="btn btn-danger ms-2">{{showPass ? 'Hide' : 'Show'}} Password</button> -->
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- 2-way data binding example-->
+    <div class="col-2">
+        <div class="p-2">
+            <label class="lbl-title">Exercise: 2-Way Data Binding</label>
+            <div class="ex-box">
+                <div class="disp-flex">
+                    <input type="number" [(ngModel)]="x" class="w-50">
+                    <input type="number" [(ngModel)]="y" class="w-50 ms-2">
+                </div>
+                <label class="lbl">Addition of {{x}} & {{y}} is {{x+y}}</label>
+                <label class="lbl">Substruction of {{x}} & {{y}} is {{x-y}}</label>
+                <label class="lbl">Multiplication of {{x}} & {{y}} is {{x*y}}</label>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="p-2">
+            <label class="lbl-title">Exercise: 2-Way Data Binding (Character Left)</label>
+            <div class="ex-box">
+                <label class="float-right lbl2">{{maxLen-msg.length}} characters left</label>
+                <textarea [(ngModel)]="msg" [maxlength]="maxLen" rows="3" style="width:100%"></textarea>
+            </div>
+        </div>
+    </div>
+    <!-- template reference variable -->
+    <div class="col-2">
+        <div class="p-2">
+            <label class="lbl-title">Example: Template Reference variable</label>
+            <div class="ex-box">
+                <div class="disp-flex">
+                    <input type="number" #num1 class="w-50">
+                    <input type="number" ref-num2 class="w-50 ms-2">
+                </div>
+                <div class="text-center mt-2">
+                    <button class="btn btn-secondary" (click)="addition(+num1.value, +num2.value)" style="width:unset">Add</button>
+                    <label>{{addMsg}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

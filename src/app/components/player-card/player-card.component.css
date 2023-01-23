@@ -1,0 +1,20 @@
+.card-header{
+    background-color: antiquewhite;
+}
+.my-btn{
+    margin: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.img-size{
+    max-height: 200px;
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    opacity: 1;
+    transition: opacity .5s linear;
+    z-index: 0;
+}

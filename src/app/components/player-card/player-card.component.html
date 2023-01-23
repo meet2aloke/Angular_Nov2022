@@ -1,0 +1,15 @@
+<div class="p-2">
+    <div class="card text-center">
+        <div class="card-header">
+            <label>{{playerCard.name | namePrefix : playerCard.gender}}</label><br>
+            <label>[{{playerCard.tenure}}]</label>
+        </div>
+        <div class="card-body">
+            <img src="{{playerCard.profileImg}}" class="d-block img-size" alt="...">
+        </div>
+        <div class="card-footer">
+            <button (click)="updPlayer(playerCard.id)" class="btn btn-success my-btn"><span class="fas fa-edit me-1"></span>Edit</button>
+            <button (click)="delPlayer(playerCard.id)" class="btn btn-warning my-btn"><span class="fas fa-trash-alt me-1"></span>Delete</button>
+        </div>
+    </div>
+</div>

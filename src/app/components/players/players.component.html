@@ -1,0 +1,33 @@
+<div class="main">
+    <button (click)="this.showTable=true; this.showCard=false" class="btn btn-default" [ngClass]="btnList"><span class="fas fa-table pe-1"></span>List</button>
+    <button (click)="this.showTable=false; this.showCard=true" class="btn btn-default" [ngClass]="btnCard"><span class="fas fa-address-card pe-1"></span>Card </button>
+    <!-- <div class="float-right">
+        <input [(ngModel)]="searchText" class="form-control srch-box" placeholder="Search something here...">
+    </div> -->
+    <div>
+        <ng-container *ngIf="showTable; else showCards">
+            <app-player-list [playersList]="players" 
+                (viewPlayerList)="viewPlayer($event)" 
+                (editPlayerList)="updatePlayer($event)"
+                (delPlayerList)="deletePlayer($event)">
+            </app-player-list>
+        </ng-container>
+        <ng-template #showCards>
+            <div class="row m-0 mb-4 border">
+                <div class="col-3" *ngFor="let player of players">
+                    <app-player-card [playerCard]="player"
+                        (updPlayerCard)="updatePlayer($event)"
+                        (delPlayerCard)="deletePlayer($event)">
+                    </app-player-card>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+    <div class="text-center mb-3">
+        <button (click)="addPlayer()" type="button" class="btn btn-primary"><span class="fas fa-user me-1"></span>Add Player</button>
+    </div>
+</div>
+
+<!-- Modal -->
+<button #modalOpen type="button" data-bs-toggle="modal" data-bs-target="#playerModal" [hidden]="true">Open Modal</button>
+<app-player-modal [player]="modalData" (openModal)="openModal" (emitAddUpdPlayer)="addUpdPlayer($event)"></app-player-modal>

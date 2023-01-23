@@ -1,0 +1,74 @@
+<app-categories></app-categories>
+<div class="pt-2">
+    <div class="row m-0">
+        <div class="col-sm-12 p-0">
+            <div class="border mh-2 bg-white">
+                <label class="lbl-head">PARENT</label>
+                <div class="row p-2">
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-6 disp-flex">
+                                <label class="me-2">Own Data A</label>
+                                <input type="number" [(ngModel)]="p1a" class="in-2">
+                            </div>
+                            <div class="col-6 disp-flex">
+                                <label class="me-2">Own Data B</label>
+                                <input type="text" [(ngModel)]="p1b" class="in-2">
+                            </div>
+                            <div class="col-6 disp-flex mt-2">
+                                <label class="me-2">Own Data C</label>
+                                <select [(ngModel)]="p1c" class="in-2">
+                                    <option>JavaScript</option>
+                                    <option>TypeScript</option>
+                                    <option>Angular</option>
+                                    <option>React</option>
+                                </select>
+                            </div>
+                            <div class="col-6 disp-flex mt-2">
+                                <label class="me-2">Own Data D</label>
+                                <input type="radio" [(ngModel)]="p1d" value="Inperson"> In-Person
+                                <input type="radio" [(ngModel)]="p1d" value="Online"> Online
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-6 p-1">
+                                <div class="border p-2">
+                                    <label>Data from CHILD-2: X = {{p_c2x}}</label><br>
+                                    <label>Data from CHILD-2: Y = {{p_c2y}}</label><br>
+                                    <label>Data from CHILD-2: Z = {{p_c2z}}</label><br>
+                                </div>
+                            </div>
+                            <div class="col-6 p-1">
+                                <div class="border p-2 me-2">
+                                    <label>Data from CHILD-1: M = {{p_c1m}}</label><br>
+                                    <label>Data from CHILD-1: N = {{p_c1n}}</label><br>
+                                    <label>Data from CHILD-1: O = {{p_c1o}}</label><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-0 mt-2">
+        <div class="col-sm-6 ps-0 pe-1">
+            <div class=" border mh-3 bg-white">
+                <label class="lbl-head">CHILD - 1</label>
+                <div class="p-2">
+                    <app-child1 [a]="p1a" [b]="p1b" [c]="p1c" [d]="p1d" [f1]="p1f1" (c1_emit)="receiveFrom_c1($event)"></app-child1>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 ps-1 pe-0">
+            <div class=" border mh-3 bg-white">
+                <label class="lbl-head">CHILD - 2</label>
+                <div class="p-2">
+                    <app-child2 [p_elem]="p1_elem" (c2_emit)="receiveFrom_c2($event)"></app-child2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

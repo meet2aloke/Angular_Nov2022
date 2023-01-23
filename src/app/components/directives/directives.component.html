@@ -1,0 +1,201 @@
+<div class="row">
+    <div class="col-12 text-center fs-3">
+        Directives (Jan 5th - 7th, 2023)
+    </div>
+    <div class="col-4">
+        <div class="p-2">
+            <label id="abc" class="lbl-title">Structural Directives: *ngIf, *ngSwitch</label>
+            <div class="ex-box">
+                <div class="disp-flex">
+                    <div>
+                        <label class="pe-2">Enter a Number</label>
+                        <input type="number" [(ngModel)]="n" class="sm-input">
+                    </div>
+                    <div *ngIf="n%2===0;else oddBlock">
+                        {{n}} is Even.
+                    </div>
+                    <ng-template #oddBlock>
+                        <div>{{n}} is Odd.</div>
+                    </ng-template>
+                </div>
+                <hr>
+                <div *ngIf="flag">This is controlled by ngIf</div>
+                <div [hidden]="!flag" [ngClass]="">This is controlled by hidden</div>
+                <hr>
+                <div>
+                    <label class="pe-4">Enter a Date</label>
+                    <input type="date" [(ngModel)]="currDate">
+                </div>
+                <div [ngSwitch]="dayNumber">
+                    The date is {{currDate | date: 'MM/dd/yyyy'}}, which is  
+                    <label *ngSwitchCase="0">Sunday</label>
+                    <label *ngSwitchCase="1">Monday</label>
+                    <label *ngSwitchCase="2">Tuesday</label>
+                    <label *ngSwitchCase="3">Wednesday</label>
+                    <label *ngSwitchCase="4">Thursday</label>
+                    <label *ngSwitchCase="5">Friday</label>
+                    <label *ngSwitchCase="6">Saturday</label>
+                    <label *ngSwitchDefault>Unknown</label>
+                </div>
+                <hr>
+                <div>
+                    <label class="pe-4">Enter an Alphabet</label>
+                    <input type="text" maxlength="1" [(ngModel)]="alpha" class="sm-input">
+                </div>
+                <div [ngSwitch]="alpha">
+                    {{alpha}} is for 
+                    <!-- <label>OR condition</label> -->
+                    <label *ngSwitchCase="'A'">Ambulance</label>
+                    <label *ngSwitchCase="'B'">Bus</label>
+                    <label *ngSwitchCase="'C'">Car</label>
+                    <label *ngSwitchCase="'D'">Dump Truck</label>
+                    <label *ngSwitchCase="'E'">Excavator</label>
+                    <label *ngSwitchCase="'F'">Fire Truck</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="p-2">
+            <label class="lbl-title">Structural Directives: *ngFor</label>
+            <div class="ex-box">
+                <label class="lbl-title disp-block">Dropdown from Array</label>
+                <select [(ngModel)]="selectedCountry">
+                    <option *ngFor="let country of countryList">
+                        {{country}}
+                    </option>
+                </select>
+                <label class="disp-block">You have selected {{selectedCountry}}</label>
+
+                <hr>
+                <label class="lbl-title disp-block">Dropdown from Key-Value</label>
+                <select [(ngModel)]="selectedState">
+                    <option *ngFor="let state of usStates" [value]="state.abbr">
+                        {{state.name}}
+                    </option>
+                </select>
+                <label class="disp-block">You have selected {{selectedState}}</label>
+
+                <hr>
+                <label class="lbl-title disp-block">Datalist</label>
+                <input list="xyz" [(ngModel)]="txtState">
+                <datalist id="xyz">
+                    <option *ngFor="let state of usStates">
+                        {{state.name}}
+                    </option>
+                </datalist>
+                <label class="disp-block">Input state {{txtState}}</label>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="p-2">
+            <label class="lbl-title">Structural Directives: *ngFor</label>
+            <div class="ex-box">
+                <label class="lbl-title disp-block">Multi-select dropdown</label>
+                <select [(ngModel)]="selectedStates" multiple>
+                    <option *ngFor="let state of usStates" [value]="state.abbr">
+                        {{state.name}}
+                    </option>
+                </select>
+                <label class="disp-block">You have selected {{selectedStates}}</label>
+                
+                <hr>
+                <label class="lbl-title disp-block">Loop through a table; trackBy</label>
+                <table class="table table-bordered table-striped">
+                    <thead class="bg-success text-center text-white">
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>Salary</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let emp of employees;trackBy:trackByEmp">
+                            <td>{{emp.eID}}</td>
+                            <td>{{emp.name}}</td>
+                            <td>{{emp.add}}</td>
+                            <td>{{emp.sal}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-primary" (click)="updateEmp()">Update Employee</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="p-2">
+            <label class="lbl-title">Structural Directives: *ngIf vs hidden</label>
+            <div class="ex-box">
+                <input type="checkbox" [(ngModel)]="showTable"> {{showTable?'Hide':'Show'}} Table
+                <table *ngIf="showTable" class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <td>ngIf-1a</td>
+                            <td>ngIf-1b</td>
+                            <td>ngIf-1c</td>
+                            <td>ngIf-1d</td>
+                        </tr>
+                        <tr>
+                            <td>ngIf-2a</td>
+                            <td>ngIf-2b</td>
+                            <td>ngIf-2c</td>
+                            <td>ngIf-2d</td>
+                        </tr>
+                        <!-- <tr>
+                            <td>ngIf-3a</td>
+                            <td>ngIf-3b</td>
+                            <td>ngIf-3c</td>
+                            <td>ngIf-3d</td>
+                        </tr>
+                        <tr>
+                            <td>ngIf-4a</td>
+                            <td>ngIf-4b</td>
+                            <td>ngIf-4c</td>
+                            <td>ngIf-4d</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+                <table [hidden]="!showTable" class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <td>Hidden-1a</td>
+                            <td>Hidden-1b</td>
+                            <td>Hidden-1c</td>
+                            <td>Hidden-1d</td>
+                        </tr>
+                        <tr>
+                            <td>Hidden-2a</td>
+                            <td>Hidden-2b</td>
+                            <td>Hidden-2c</td>
+                            <td>Hidden-2d</td>
+                        </tr>
+                        <!-- <tr>
+                            <td>Hidden-3a</td>
+                            <td>Hidden-3b</td>
+                            <td>Hidden-3c</td>
+                            <td>Hidden-3d</td>
+                        </tr>
+                        <tr>
+                            <td>Hidden-4a</td>
+                            <td>Hidden-4b</td>
+                            <td>Hidden-4c</td>
+                            <td>Hidden-4d</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="p-2">
+            <label class="lbl-title">Structural Directives: *ngFor</label>
+            <div class="ex-box">
+                <ul>
+                    <li *ngFor="let car of cars">{{car}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+

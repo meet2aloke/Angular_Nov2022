@@ -1,0 +1,14 @@
+<div class="p-4">
+    <div class="text-center bg-primary text-white p-2">Read Users Data from JSON File</div>
+    <table class="table table-bordered table-striped">
+        <tbody class="text-center">
+            <th *ngFor="let colName of colNames">{{colName}}</th>
+        </tbody>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <!-- <td *ngFor="let entry of user | keyvalue">{{entry.value}}</td> -->
+                <td *ngFor="let key of colNames">{{user[key]}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

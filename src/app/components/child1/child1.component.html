@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-4 disp-flex">
+        <label class="me-3">Own Data M</label>
+        <input type="number" [(ngModel)]="c1m" (change)="sendDataToParent()" (keyup)="sendDataToParent()" class="in-1">
+    </div>
+    <div class="col-4 disp-flex">
+        <label class="me-2">Own Data N</label>
+        <input type="text" [(ngModel)]="c1n" (change)="sendDataToParent()" class="in-2">
+    </div>
+    <div class="col-4 disp-flex">
+        <label class="me-2">Own Data O</label>
+        <select [(ngModel)]="c1o" on-change="sendDataToParent()" class="in-2">
+            <option value="Medicine">Medicine</option>
+            <option value="Obgyn">Ob/Gyn</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Surgery">Surgery</option>
+        </select>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-6">
+        <label>Coming from Parent: A={{a}}</label><br>
+        <label>Coming from Parent: B={{b}}</label><br>
+        <label>Coming from Parent: C={{c}}</label><br>
+        <label>Coming from Parent: D={{d}}</label><br>
+    </div>
+    <div class="col-6">
+
+    </div>
+</div>
+<hr>
+<div class="text-center">
+    <button class="btn btn-info" (click)="f1()">Parent Function</button>
+</div>
